@@ -73,7 +73,7 @@ setStage("Placing inside your palace...");
 
 const res = await axios.post(
 
-"http://localhost:8000/api/palace/new-memory",
+"https://memory-palace-6pf8.onrender.com/api/palace/new-memory",
 
 {
 message:memory

@@ -54,7 +54,7 @@ setMemories([]);
 
 const res = await axios.post(
 
-"http://localhost:8000/api/palace/getFromMemory",
+"https://memory-palace-6pf8.onrender.com/api/palace/getFromMemory",
 
 {
 query,

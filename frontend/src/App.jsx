@@ -1,11 +1,11 @@
-import { 
-  useSelector, 
-  useDispatch 
+import {
+  useSelector,
+  useDispatch
 } from "react-redux";
 
-import { 
-  Routes, 
-  Route, 
+import {
+  Routes,
+  Route,
   Navigate,
   useLocation
 } from "react-router-dom";
@@ -25,9 +25,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
 
-import { 
-  login, 
-  logout 
+import {
+  login,
+  logout
 } from "./redux/slices/authSlice.js";
 
 
@@ -36,167 +36,61 @@ import {
 
 
 
-function ProtectedRoute({children}){
+function ProtectedRoute({ children }) {
 
 
-const user = useSelector(
-  state => state.auth.user
-);
+  const user = useSelector(
+    state => state.auth.user
+  );
 
 
-const location = useLocation();
+  const location = useLocation();
 
 
 
-useEffect(()=>{
+  useEffect(() => {
 
 
-if(user === null){
+    if (user === null) {
 
 
-toast.error(
-"Please login to access your Memory Palace"
-);
+      toast.error(
+        "Please login to access your Memory Palace"
+      );
 
 
-}
+    }
 
 
-},[user]);
+  }, [user]);
 
 
 
 
 
-if(!user){
+  if (!user) {
 
-return (
+    return (
 
-<Navigate
+      <Navigate
 
-to="/login"
+        to="/login"
 
-replace
+        replace
 
-state={{
-from:location.pathname
-}}
+        state={{
+          from: location.pathname
+        }}
 
-/>
+      />
 
-);
+    );
 
-}
+  }
 
 
 
-return children;
-
-
-}
-
-
-
-
-
-
-
-
-
-function App(){
-
-
-const dispatch = useDispatch();
-
-
-
-const user = useSelector(
-(state)=>state.auth.user
-);
-
-
-
-
-
-
-useEffect(()=>{
-
-
-const fetchMe = async()=>{
-
-
-try{
-
-
-const response = await axios.get(
-
-"http://localhost:8000/api/auth/me",
-
-{
-withCredentials:true
-}
-
-);
-
-
-
-
-dispatch(
-
-login(
-
-response.data.data.user || null
-
-)
-
-);
-
-
-
-}
-
-catch(error){
-
-
-dispatch(
-logout()
-);
-
-
-}
-
-
-};
-
-
-
-
-fetchMe();
-
-
-
-},[dispatch]);
-
-
-
-
-
-
-
-
-
-if(user === undefined){
-
-
-return (
-
-<h1>
-
-Loading...
-
-</h1>
-
-);
+  return children;
 
 
 }
@@ -209,143 +103,144 @@ Loading...
 
 
 
-return (
+function App() {
 
 
-<>
+  const dispatch = useDispatch();
 
 
-<Routes>
 
+  const user = useSelector(
+    (state) => state.auth.user
+  );
 
 
 
 
 
-<Route
 
-path="/login"
+  useEffect(() => {
 
-element={
 
-user
+    const fetchMe = async () => {
 
-?
 
-<Navigate to="/landing"/>
+      try {
 
-:
 
-<Login/>
+        const response = await axios.get(
 
-}
+          "https://memory-palace-6pf8.onrender.com/api/auth/me",
 
-/>
+          {
+            withCredentials: true
+          }
 
+        );
 
 
 
 
+        dispatch(
 
+          login(
 
+            response.data.data.user || null
 
-<Route
+          )
 
-path="/signup"
+        );
 
-element={
 
-user
 
-?
+      }
 
-<Navigate to="/landing"/>
+      catch (error) {
 
-:
 
-<Signup/>
+        dispatch(
+          logout()
+        );
 
-}
 
-/>
+      }
 
 
+    };
 
 
 
 
+    fetchMe();
 
 
 
-<Route
+  }, [dispatch]);
 
-path="/landing"
 
-element={
 
 
-<ProtectedRoute>
 
-<Landing/>
 
-</ProtectedRoute>
 
 
-}
 
-/>
+  if (user === undefined) {
 
 
+    return (
 
+      <h1>
 
+        Loading...
 
+      </h1>
 
+    );
 
 
-<Route
+  }
 
-path="/create-memory"
 
-element={
 
 
-<ProtectedRoute>
 
-<CreateMemory/>
 
-</ProtectedRoute>
 
 
-}
 
-/>
+  return (
 
 
+    <>
 
 
+      <Routes>
 
 
 
 
 
-<Route
 
-path="/recall"
+        <Route
 
-element={
+          path="/login"
 
+          element={
 
-<ProtectedRoute>
+            user
 
-<Recall/>
+              ?
 
-</ProtectedRoute>
+              <Navigate to="/landing" />
 
+              :
 
-}
+              <Login />
 
-/>
+          }
 
+        />
 
 
 
@@ -354,62 +249,167 @@ element={
 
 
 
-<Route
+        <Route
 
-path="*"
+          path="/signup"
 
-element={
+          element={
 
-<Navigate
+            user
 
-to={
+              ?
 
-user
+              <Navigate to="/landing" />
 
-?
+              :
 
-"/recall"
+              <Signup />
 
-:
+          }
 
-"/login"
+        />
 
-}
 
-/>
 
-}
 
-/>
 
 
 
 
-</Routes>
 
+        <Route
 
+          path="/landing"
 
+          element={
 
 
+            <ProtectedRoute>
 
+              <Landing />
 
+            </ProtectedRoute>
 
-<ToastContainer
 
-position="top-right"
+          }
 
-autoClose={2500}
+        />
 
-theme="dark"
 
-/>
 
 
 
-</>
 
 
-);
+
+        <Route
+
+          path="/create-memory"
+
+          element={
+
+
+            <ProtectedRoute>
+
+              <CreateMemory />
+
+            </ProtectedRoute>
+
+
+          }
+
+        />
+
+
+
+
+
+
+
+
+
+        <Route
+
+          path="/recall"
+
+          element={
+
+
+            <ProtectedRoute>
+
+              <Recall />
+
+            </ProtectedRoute>
+
+
+          }
+
+        />
+
+
+
+
+
+
+
+
+
+        <Route
+
+          path="*"
+
+          element={
+
+            <Navigate
+
+              to={
+
+                user
+
+                  ?
+
+                  "/recall"
+
+                  :
+
+                  "/login"
+
+              }
+
+            />
+
+          }
+
+        />
+
+
+
+
+      </Routes>
+
+
+
+
+
+
+
+
+      <ToastContainer
+
+        position="top-right"
+
+        autoClose={2500}
+
+        theme="dark"
+
+      />
+
+
+
+    </>
+
+
+  );
 
 
 }

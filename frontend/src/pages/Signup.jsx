@@ -31,7 +31,7 @@ const   Signup = () => {
         try {
 
             const response = await axios.post(
-                "http://localhost:8000/api/auth/signup",
+                "https://memory-palace-6pf8.onrender.com/api/auth/signup",
                 {
                     username,
                     password
