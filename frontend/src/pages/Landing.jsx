@@ -13,267 +13,267 @@ import {
 
 
 
-export default function Landing(){
+export default function Landing() {
 
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
 
-const memories=[
+    const memories = [
 
-{
-name:"Childhood",
-x:120,
-y:150
-},
+        {
+            name: "Childhood",
+            x: 120,
+            y: 150
+        },
 
-{
-name:"Ideas",
-x:550,
-y:120
-},
+        {
+            name: "Ideas",
+            x: 550,
+            y: 120
+        },
 
-{
-name:"People",
-x:620,
-y:420
-},
+        {
+            name: "People",
+            x: 620,
+            y: 420
+        },
 
-{
-name:"Dreams",
-x:170,
-y:500
-},
+        {
+            name: "Dreams",
+            x: 170,
+            y: 500
+        },
 
-{
-name:"Learning",
-x:420,
-y:600
-},
+        {
+            name: "Learning",
+            x: 420,
+            y: 600
+        },
 
-{
-name:"Projects",
-x:350,
-y:70
-}
+        {
+            name: "Projects",
+            x: 350,
+            y: 70
+        }
 
-];
+    ];
 
 
 
-return (
+    return (
 
-<div className="
+        <div className="
 min-h-screen
 overflow-x-hidden
-bg-[#050402]
-text-[#f4ead7]
+bg-[#151311]
+text-[#f3ece1]
 relative
 ">
 
 
 
-{/* ambient background */}
+            {/* ambient background */}
 
 
-<div className="
+            <div className="
 fixed
 inset-0
-bg-[radial-gradient(circle_at_70%_40%,rgba(190,140,55,.18),transparent_50%)]
+bg-[radial-gradient(circle_at_70%_40%,rgba(168,125,82,.16),transparent_50%)]
 "
-/>
+            />
 
 
 
 
-{/* MEMORY SPACE BACKGROUND */}
+            {/* MEMORY SPACE BACKGROUND */}
 
 
-<div
-className="
+            <div
+                className="
 fixed
 inset-0
-bg-[#050402]
+bg-[#151311]
 "
-/>
+            />
 
 
 
-{/* warm depth glow */}
+            {/* warm depth glow */}
 
-<div
-className="
+            <div
+                className="
 fixed
 inset-0
-bg-[radial-gradient(circle_at_70%_40%,rgba(198,150,65,.18),transparent_45%)]
+bg-[radial-gradient(circle_at_70%_40%,rgba(121,99,74,.16),transparent_45%)]
 "
-/>
+            />
 
 
 
 
-{/* distant stars */}
+            {/* distant stars */}
 
-{
-Array.from({length:160}).map((_,i)=>(
+            {
+                Array.from({ length: 160 }).map((_, i) => (
 
-<motion.div
+                    <motion.div
 
-key={i}
+                        key={i}
 
-className="
+                        className="
 fixed
 rounded-full
-bg-[#f5deb3]
+bg-[#ddd0b7]
 "
 
-style={{
+                        style={{
 
-width:
-Math.random()>0.8
-?
-"3px"
-:
-"1px",
+                            width:
+                                Math.random() > 0.8
+                                    ?
+                                    "3px"
+                                    :
+                                    "1px",
 
-height:
-Math.random()>0.8
-?
-"3px"
-:
-"1px",
+                            height:
+                                Math.random() > 0.8
+                                    ?
+                                    "3px"
+                                    :
+                                    "1px",
 
-left:`${Math.random()*100}%`,
+                            left: `${Math.random() * 100}%`,
 
-top:`${Math.random()*100}%`,
+                            top: `${Math.random() * 100}%`,
 
-opacity:
-Math.random()
+                            opacity:
+                                Math.random()
 
-}}
-
-
-animate={{
-
-opacity:[
-0.15,
-0.8,
-0.15
-],
-
-scale:[
-1,
-1.4,
-1
-]
-
-}}
+                        }}
 
 
-transition={{
+                        animate={{
 
-duration:
-4+Math.random()*5,
+                            opacity: [
+                                0.15,
+                                0.8,
+                                0.15
+                            ],
 
-repeat:Infinity,
+                            scale: [
+                                1,
+                                1.4,
+                                1
+                            ]
 
-delay:Math.random()*4
-
-}}
-
-/>
-
-))
-}
+                        }}
 
 
+                        transition={{
+
+                            duration:
+                                4 + Math.random() * 5,
+
+                            repeat: Infinity,
+
+                            delay: Math.random() * 4
+
+                        }}
+
+                    />
+
+                ))
+            }
 
 
 
 
 
-{/* moving memory dust */}
 
-{
-Array.from({length:50}).map((_,i)=>(
 
-<motion.div
+            {/* moving memory dust */}
 
-key={"dust"+i}
+            {
+                Array.from({ length: 50 }).map((_, i) => (
 
-className="
+                    <motion.div
+
+                        key={"dust" + i}
+
+                        className="
 fixed
 w-[2px]
 h-[2px]
 rounded-full
-bg-[#d8b66d]
+bg-[#b89c73]
 "
 
 
-style={{
+                        style={{
 
-left:`${Math.random()*100}%`,
+                            left: `${Math.random() * 100}%`,
 
-top:`${Math.random()*100}%`
+                            top: `${Math.random() * 100}%`
 
-}}
-
-
-
-animate={{
-
-y:[
-0,
--200
-],
-
-opacity:[
-0,
-1,
-0
-]
+                        }}
 
 
-}}
+
+                        animate={{
+
+                            y: [
+                                0,
+                                -200
+                            ],
+
+                            opacity: [
+                                0,
+                                1,
+                                0
+                            ]
 
 
-transition={{
-
-duration:
-10+Math.random()*10,
-
-repeat:Infinity,
-
-delay:
-Math.random()*5
+                        }}
 
 
-}}
+                        transition={{
+
+                            duration:
+                                10 + Math.random() * 10,
+
+                            repeat: Infinity,
+
+                            delay:
+                                Math.random() * 5
 
 
-/>
-
-))
-}
+                        }}
 
 
+                    />
+
+                ))
+            }
 
 
 
 
 
-{/* bottom darkness vignette */}
 
-<div
-className="
+
+            {/* bottom darkness vignette */}
+
+            <div
+                className="
 fixed
 inset-0
-bg-[radial-gradient(circle,transparent_20%,#050402_90%)]
+bg-[radial-gradient(circle,transparent_20%,#151311_90%)]
 pointer-events-none
 "
-/>
+            />
 
-<nav className="
+            <nav className="
 relative
 z-30
 px-20
@@ -285,7 +285,7 @@ items-center
 ">
 
 
-<div className="
+                <div className="
 flex
 gap-3
 items-center
@@ -293,40 +293,40 @@ font-serif
 text-2xl
 ">
 
-<Library/>
+                    <Library />
 
-Memory Palace
+                    Memory Palace
 
-</div>
+                </div>
 
 
-<button
+                <button
 
-className="
+                    className="
 tracking-[8px]
-text-[#d7ad62]
+text-[#b58a5a]
 "
 
->
+                >
 
-ENTER
+                    ENTER
 
-</button>
-
-
-</nav>
+                </button>
 
 
+            </nav>
 
 
 
 
 
 
-{/* HERO */}
 
 
-<section className="
+            {/* HERO */}
+
+
+            <section className="
 relative
 z-10
 min-h-screen
@@ -343,131 +343,158 @@ px-24
 
 
 
-{/* LEFT CONTENT */}
+                {/* LEFT CONTENT */}
 
 
-<motion.div
+                <motion.div
 
-initial={{
-opacity:0,
-x:-60
-}}
+                    initial={{
+                        opacity: 0,
+                        x: -60
+                    }}
 
-animate={{
-opacity:1,
-x:0
-}}
+                    animate={{
+                        opacity: 1,
+                        x: 0
+                    }}
 
-transition={{
-duration:1
-}}
+                    transition={{
+                        duration: 1
+                    }}
 
->
+                >
 
 
 
-<div className="
+                    <div className="
 flex
 gap-3
 items-center
-text-[#d7ad62]
+text-[#b58a5a]
 mb-8
 ">
 
-<Sparkles/>
+                        <Sparkles />
 
-Living memory ecosystem
-
-
-</div>
+                        Living memory ecosystem
 
 
+                    </div>
 
 
 
 
 
-<h1 className="
+
+
+                    <h1 className="
 font-serif
 text-8xl
 leading-none
 ">
 
 
-Grow
+                        Grow
 
-<br/>
+                        <br />
 
-Your
+                        Your
 
-<br/>
+                        <br />
 
 
-<span className="
+                        <span className="
 italic
-text-[#d7ad62]
+text-[#b58a5a]
 ">
 
-Second Mind
+                            Second Mind
 
-</span>
-
-
-</h1>
+                        </span>
 
 
+                    </h1>
 
 
 
 
 
-<p className="
+
+
+                    <p className="
 mt-10
 text-xl
 leading-relaxed
 max-w-xl
-text-[#b9aa91]
+text-[#c2b3a0]
 ">
 
 
-Your memories are not stored.
+                        Your memories are not stored.
 
-They evolve into a living network where
-ideas, people, experiences and lessons
-naturally connect.
-
-
-</p>
+                        They evolve into a living network where
+                        ideas, people, experiences and lessons
+                        naturally connect.
 
 
+                    </p>
 
 
 
 
 
-<button
 
-onClick={()=>navigate("/create-memory")}
 
-className="
+                    <button
+
+                        onClick={() => navigate("/create-memory")}
+
+                        className="
 mt-14
 text-3xl
 font-serif
-hover:text-[#d7ad62]
+hover:text-[#b58a5a]
 transition
 "
 
->
+                    >
 
 
-Start Growing →
+                        Start Growing →
 
 
-</button>
+                    </button>
+
+                    <button
+
+                        onClick={() => navigate("/recall")}
+
+                        className="
+mt-6
+block
+text-lg
+tracking-[0.24em]
+uppercase
+text-[#c2b3a0]
+border-b
+border-[#7f6649]
+pb-1
+hover:text-[#efe3d0]
+hover:border-[#b58a5a]
+transition
+"
+
+                    >
+
+
+                        Recall Memory
+
+
+                    </button>
 
 
 
-</motion.div>
+                </motion.div>
 
 
 
@@ -478,43 +505,43 @@ Start Growing →
 
 
 
-{/* RIGHT TREE */}
+                {/* RIGHT TREE */}
 
 
 
-<motion.div
+                <motion.div
 
 
-initial={{
-opacity:0,
-scale:.8
-}}
+                    initial={{
+                        opacity: 0,
+                        scale: .8
+                    }}
 
-animate={{
-opacity:1,
-scale:1
-}}
+                    animate={{
+                        opacity: 1,
+                        scale: 1
+                    }}
 
-transition={{
-duration:1.5
-}}
+                    transition={{
+                        duration: 1.5
+                    }}
 
 
-className="
+                    className="
 relative
 h-[850px]
 "
 
 
 
->
+                >
 
 
-<svg
+                    <svg
 
-viewBox="0 0 750 750"
+                        viewBox="0 0 750 750"
 
-className="
+                        className="
 absolute
 right-[-50px]
 top-0
@@ -525,27 +552,27 @@ drop-shadow-[0_0_80px_rgba(214,170,98,.25)]
 "
 
 
->
+                    >
 
 
-<defs>
+                        <defs>
 
 
-<filter id="goldGlow">
+                            <filter id="goldGlow">
 
 
-<feGaussianBlur
+                                <feGaussianBlur
 
-stdDeviation="6"
+                                    stdDeviation="6"
 
-/>
+                                />
 
 
-</filter>
+                            </filter>
 
 
 
-</defs>
+                        </defs>
 
 
 
@@ -553,52 +580,52 @@ stdDeviation="6"
 
 
 
-{/* branches */}
+                        {/* branches */}
 
-{
+                        {
 
 
-memories.map((m,i)=>(
+                            memories.map((m, i) => (
 
 
 
-<motion.line
+                                <motion.line
 
-key={i}
+                                    key={i}
 
-x1="370"
+                                    x1="370"
 
-y1="370"
+                                    y1="370"
 
-x2={m.x}
+                                    x2={m.x}
 
-y2={m.y}
+                                    y2={m.y}
 
-stroke="rgba(218,180,95,.65)"
-strokeWidth="1.5"
+stroke="rgba(161,132,94,.62)"
+                                    strokeWidth="1.5"
 
-initial={{
-pathLength:0
-}}
+                                    initial={{
+                                        pathLength: 0
+                                    }}
 
-animate={{
-pathLength:1
-}}
+                                    animate={{
+                                        pathLength: 1
+                                    }}
 
-transition={{
-duration:2,
-delay:i*.2
-}}
+                                    transition={{
+                                        duration: 2,
+                                        delay: i * .2
+                                    }}
 
 
 
-/>
+                                />
 
 
-))
+                            ))
 
 
-}
+                        }
 
 
 
@@ -606,125 +633,125 @@ delay:i*.2
 
 
 
-{/* center */}
+                        {/* center */}
 
-<motion.circle
+                        <motion.circle
 
-cx="370"
+                            cx="370"
 
-cy="370"
+                            cy="370"
 
-r="50"
+                            r="50"
 
-fill="#caa04d"
+fill="#ad8456"
 
-animate={{
+                            animate={{
 
-r:[45,60,45]
+                                r: [45, 60, 45]
 
-}}
+                            }}
 
-transition={{
+                            transition={{
 
-duration:5,
+                                duration: 5,
 
-repeat:Infinity
+                                repeat: Infinity
 
-}}
+                            }}
 
 
-/>
+                        />
 
 
 
 
 
 
-{/* nodes */}
+                        {/* nodes */}
 
-{
+                        {
 
 
-memories.map((m,i)=>(
+                            memories.map((m, i) => (
 
 
-<g key={i}>
+                                <g key={i}>
 
 
-<motion.circle
+                                    <motion.circle
 
-cx={m.x}
+                                        cx={m.x}
 
-cy={m.y}
+                                        cy={m.y}
 
-r="18"
+                                        r="18"
 
-fill="#ead18a"
+fill="#d9c09a"
 
-animate={{
+                                        animate={{
 
-r:[15,22,15]
+                                            r: [15, 22, 15]
 
-}}
+                                        }}
 
-transition={{
+                                        transition={{
 
-duration:4+i,
+                                            duration: 4 + i,
 
-repeat:Infinity
+                                            repeat: Infinity
 
-}}
+                                        }}
 
-/>
+                                    />
 
 
 
-<text
+                                    <text
 
-x={m.x+30}
+                                        x={m.x + 30}
 
-y={m.y+8}
+                                        y={m.y + 8}
 
-fontSize="22"
+                                        fontSize="22"
 
-fill="#e8d7b5"
+fill="#e7dcc9"
 
-fontFamily="serif"
+                                        fontFamily="serif"
 
->
+                                    >
 
 
-{m.name}
+                                        {m.name}
 
 
-</text>
+                                    </text>
 
 
 
-</g>
+                                </g>
 
 
-))
+                            ))
 
 
-}
+                        }
 
 
 
 
-</svg>
+                    </svg>
 
 
 
 
-</motion.div>
+                </motion.div>
 
 
 
 
 
 
-</section>
+            </section>
 
 
 
@@ -734,10 +761,10 @@ fontFamily="serif"
 
 
 
-{/* NEXT SECTION */}
+            {/* NEXT SECTION */}
 
 
-<section className="
+            <section className="
 relative
 z-20
 min-h-screen
@@ -748,28 +775,28 @@ text-center
 ">
 
 
-<h2 className="
+                <h2 className="
 font-serif
 text-7xl
 max-w-4xl
 ">
 
 
-Every memory becomes a place you can revisit.
+                    Every memory becomes a place you can revisit.
 
 
-</h2>
-
-
-
-</section>
+                </h2>
 
 
 
+            </section>
 
 
-</div>
 
-)
+
+
+        </div>
+
+    )
 
 }

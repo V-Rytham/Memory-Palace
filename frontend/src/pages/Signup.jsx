@@ -1,6 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import { login } from "../redux/slices/authSlice.js";
+import { authApi } from "../utils/apiClient";
+import { setStoredRefreshToken } from "../utils/refreshToken";
 
 const   Signup = () => {
 
@@ -9,6 +12,7 @@ const   Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     const handleSignup = async (e) => {
@@ -30,24 +34,19 @@ const   Signup = () => {
 
         try {
 
-            const response = await axios.post(
-                "https://memory-palace-6pf8.onrender.com/api/auth/signup",
+            const response = await authApi.post(
+                "/auth/signup",
                 {
                     username,
                     password
-                },
-                {
-                    withCredentials: true
                 }
             );
+            const user = response.data.data.user;
+            const refreshToken = response.data.data.refreshToken;
 
-
-            console.log(response);
-
-
-            alert("Signup successful");
-
-            navigate("/login");
+            setStoredRefreshToken(refreshToken);
+            dispatch(login(user));
+            navigate("/landing");
 
 
         } catch (error) {

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Scroll } from "lucide-react";
 
 
 export default function MemoryWizard({thinking}){
@@ -28,16 +28,17 @@ items-center
 
 
 
-{/* aura */}
+{/* soft panel shadow */}
 
 <div
 className="
 absolute
 w-72
 h-72
-rounded-full
-bg-[#d6a84f]/20
-blur-[100px]
+rounded-[40px]
+bg-[#e7ddd0]
+blur-[70px]
+opacity-70
 "
 />
 
@@ -50,13 +51,11 @@ className="
 relative
 w-52
 h-64
-rounded-t-full
-bg-gradient-to-b
-from-[#3a2a12]
-to-black
+rounded-[36px]
+bg-[#f7f1e8]
 border
-border-[#d6a84f]/30
-shadow-[0_0_80px_rgba(214,168,79,.3)]
+border-[#d5c6b3]
+shadow-[0_24px_60px_rgba(62,45,27,.12)]
 flex
 items-center
 justify-center
@@ -64,12 +63,12 @@ justify-center
 >
 
 
-{/* face */}
+{/* stacked memory cards */}
 
 <motion.div
 
 animate={{
-    opacity:[.4,1,.4]
+    y:[0,-5,0]
 }}
 
 transition={{
@@ -78,27 +77,72 @@ transition={{
 }}
 
 className="
-w-20
-h-20
-rounded-full
-bg-[#d6a84f]
-blur-md
+absolute
+w-32
+h-24
+rounded-[24px]
+bg-[#eadfce]
+border
+border-[#d9c9b6]
+-rotate-6
+translate-y-3
 "
 />
 
 
+<motion.div
 
-<Sparkles
+animate={{
+    y:[0,5,0]
+}}
+
+transition={{
+    duration:3.6,
+    repeat:Infinity
+}}
 
 className="
 absolute
-text-[#f6d98b]
+w-32
+h-24
+rounded-[24px]
+bg-[#fffaf4]
+border
+border-[#d8c7b1]
+rotate-6
+-translate-y-3
+"
+/>
+
+
+<div
+
+className="
+relative
+w-28
+h-28
+rounded-[28px]
+bg-[#2f2923]
+text-[#efe4d4]
+flex
+items-center
+justify-center
+shadow-[0_18px_40px_rgba(47,41,35,.22)]
+"
+
+>
+
+<Scroll
+
+className="
+text-[#efe4d4]
 "
 
 size={50}
 
 />
 
+</div>
 
 
 </div>
@@ -121,8 +165,10 @@ opacity:1
 className="
 absolute
 -bottom-12
-font-serif
-text-[#d6a84f]
+tracking-[0.22em]
+uppercase
+text-sm
+text-[#8b7358]
 "
 
 >

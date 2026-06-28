@@ -1,10 +1,10 @@
 import { useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { useSelector } from "react-redux";
 
 import MemoryGuardian from "../components/MemoryGuardian";
+import { palaceApi } from "../utils/apiClient";
 
 
 
@@ -52,17 +52,13 @@ setMemories([]);
 
 
 
-const res = await axios.post(
+const res = await palaceApi.post(
 
-"https://memory-palace-6pf8.onrender.com/api/palace/getFromMemory",
+"/palace/getFromMemory",
 
 {
 query,
 userId
-},
-
-{
-withCredentials:true
 }
 
 );
@@ -76,7 +72,7 @@ res.data.data.answer
 
 
 setMemories(
-res.data.memories || []
+res.data.data.memories || []
 );
 
 

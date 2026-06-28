@@ -11,7 +11,6 @@ import {
 } from "react-router-dom";
 
 
-import axios from "axios";
 import { useEffect } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -29,6 +28,8 @@ import {
   login,
   logout
 } from "./redux/slices/authSlice.js";
+import { authApi } from "./utils/apiClient";
+import { clearStoredRefreshToken } from "./utils/refreshToken";
 
 
 
@@ -128,14 +129,11 @@ function App() {
       try {
 
 
-        const response = await axios.get(
-
-          "https://memory-palace-6pf8.onrender.com/api/auth/me",
-
+        const response = await authApi.get(
+          "/auth/me",
           {
-            withCredentials: true
+            requiresAuth: true
           }
-
         );
 
 
@@ -157,6 +155,7 @@ function App() {
 
       catch (error) {
 
+        clearStoredRefreshToken();
 
         dispatch(
           logout()

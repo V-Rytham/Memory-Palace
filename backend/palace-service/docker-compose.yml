@@ -1,0 +1,43 @@
+services:
+
+  palace-lb:
+    image: nginx:latest
+
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+
+    depends_on:
+      - palace-service-1
+      - palace-service-2
+
+    networks:
+      - palace-network
+      - service-network
+
+
+  palace-service-1:
+    build: ./service
+
+    env_file:
+      - .env
+
+    networks:
+      - palace-network
+
+
+  palace-service-2:
+    build: ./service
+
+    env_file:
+      - .env
+
+    networks:
+      - palace-network
+
+
+networks:
+
+  palace-network:
+
+  service-network:
+    external: true
